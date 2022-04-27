@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "universal-cookie";
 import axios from "axios";
+import signInImage from "./../assets/images/signup.jpg";
 
 const initialState = {
   fullName: "",
@@ -138,6 +139,9 @@ const Auth = () => {
           </div>
         </div>
       </div>
+      {/* <div className="auth__form-container_image">
+        <img src={signInImage} alt="sign in"></img>
+      </div> */}
     </div>
   );
 };
