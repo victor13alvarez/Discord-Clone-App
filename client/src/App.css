@@ -1,6 +1,7 @@
 :root {
   --primary-color: #005fff;
   --primary-color-alpha: #005fff1a;
+  --hover-password-validation: #005fff;
 }
 
 html,
@@ -64,7 +65,6 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
-
   margin: 1rem 0rem;
 }
 
@@ -135,6 +135,12 @@ body {
   background: #0066ff;
 }
 
+.auth__form-container_fields-content_button button:disabled {
+  background: #6c758356;
+  border-color: #000;
+  cursor: default;
+}
+
 .auth__form-container_fields-account {
   display: flex;
   justify-content: flex-start;
@@ -155,7 +161,7 @@ body {
   font-weight: 700;
 }
 
-@media screen and (max-width: 800px) {
+/* @media screen and (max-width: 800px) {
   .auth__form-container {
     flex-direction: column-reverse;
   }
@@ -173,7 +179,7 @@ body {
   .auth__form-container_image img {
     object-fit: cover;
   }
-}
+} */
 
 @media screen and (max-width: 375px) {
   .auth__form-container_fields {
@@ -1826,4 +1832,11 @@ div.rta__autocomplete.str-chat__emojisearch {
   .channel-list__sidebar {
     display: none;
   }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
