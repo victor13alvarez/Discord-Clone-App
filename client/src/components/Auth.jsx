@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "universal-cookie";
 import axios from "axios";
-import signInImage from "./../assets/images/signup.jpg";
 
+const cookies = new Cookies();
 const initialState = {
   fullName: "",
   username: "",
@@ -21,8 +21,31 @@ const Auth = () => {
       [e.target.name]: e.target.value,
     });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const { fullName, username, password, phoneNumber } = form;
+    const URL = "http://localhost:8000/auth";
+
+    const {
+      data: { token, userId, hashedPassword },
+    } = await axios.post(`${URL}/${isSignup ? "signup" : "login"}`, {
+      username,
+      password,
+      fullName,
+      phoneNumber,
+    });
+
+    cookies.set("token", token);
+    cookies.set("username", username);
+    cookies.set("fullName", fullName);
+    cookies.set("userId", userId);
+
+    if (isSignup) {
+      cookies.set("phoneNumber", phoneNumber);
+      cookies.set("hashedPassword", hashedPassword);
+    }
+
+    window.location.reload();
   };
 
   const switchMode = () => {
@@ -69,6 +92,7 @@ const Auth = () => {
                 placeholder="Username"
                 onChange={handleChange}
                 required
+                autoComplete="username"
                 value={form.username}
               />
             </div>
@@ -107,6 +131,7 @@ const Auth = () => {
                 onChange={handleChange}
                 required
                 value={form.password}
+                autoComplete="new-password"
               />
             </div>
             {isSignup && (
@@ -119,6 +144,7 @@ const Auth = () => {
                   onChange={handleChange}
                   required
                   value={form.confirmPassword}
+                  autoComplete="new-password"
                   style={{
                     color:
                       validPassword || form.confirmPassword === ""
