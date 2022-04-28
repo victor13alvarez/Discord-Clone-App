@@ -23,7 +23,6 @@ const Auth = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(form);
   };
 
   const switchMode = () => {
@@ -41,7 +40,6 @@ const Auth = () => {
 
   useEffect(() => {
     //here you will have correct value in form since this gets update in every render
-    console.log(form.password, form.confirmPassword);
     setValidPassword(form.password === form.confirmPassword);
   }, [form]);
 
@@ -152,9 +150,6 @@ const Auth = () => {
           </div>
         </div>
       </div>
-      {/* <div className="auth__form-container_image">
-        <img src={signInImage} alt="sign in"></img>
-      </div> */}
     </div>
   );
 };
