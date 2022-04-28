@@ -23,10 +23,19 @@ const Auth = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(form);
+    // console.log(form);
   };
 
   const switchMode = () => {
+    setValidPassword(() => true);
+    setForm((prevForm) => ({
+      ...prevForm,
+      fullName: "",
+      username: "",
+      phoneNumber: "",
+      password: "",
+      confirmPassword: "",
+    }));
     setIsSignup((prevIsSignUp) => !prevIsSignUp);
   };
 
@@ -62,6 +71,7 @@ const Auth = () => {
                 placeholder="Username"
                 onChange={handleChange}
                 required
+                value={form.username}
               />
             </div>
             {isSignup && (
@@ -73,6 +83,7 @@ const Auth = () => {
                   placeholder="Phone Number"
                   onChange={handleChange}
                   required
+                  value={form.phoneNumber}
                 />
               </div>
             )}
@@ -97,6 +108,7 @@ const Auth = () => {
                 placeholder="Password"
                 onChange={handleChange}
                 required
+                value={form.password}
               />
             </div>
             {isSignup && (
@@ -108,6 +120,7 @@ const Auth = () => {
                   placeholder="Confirm Password"
                   onChange={handleChange}
                   required
+                  value={form.confirmPassword}
                   style={{
                     color:
                       validPassword || form.confirmPassword === ""
@@ -122,7 +135,7 @@ const Auth = () => {
               </div>
             )}
             <div className="auth__form-container_fields-content_button">
-              <button disabled={!validPassword}>
+              <button disabled={!validPassword && isSignup}>
                 {isSignup ? "Sign Up" : "Sign In"}
               </button>
             </div>
