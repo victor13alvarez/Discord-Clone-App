@@ -15,16 +15,18 @@ const Auth = () => {
   const [form, setForm] = useState(initialState);
   const [isSignup, setIsSignup] = useState(true);
   const [validPassword, setValidPassword] = useState(true);
+
   const handleChange = (e) => {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
     });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { fullName, username, password, phoneNumber } = form;
-    const URL = "http://localhost:8000/auth";
+    const URL = "https://chat-app-clone-with-react.herokuapp.com/auth";
 
     const {
       data: { token, userId, hashedPassword },
@@ -50,6 +52,7 @@ const Auth = () => {
 
   const switchMode = () => {
     setValidPassword(() => true);
+
     setForm((prevForm) => ({
       ...prevForm,
       fullName: "",
@@ -58,6 +61,7 @@ const Auth = () => {
       password: "",
       confirmPassword: "",
     }));
+
     setIsSignup((prevIsSignUp) => !prevIsSignUp);
   };
 
@@ -104,7 +108,6 @@ const Auth = () => {
                   type="number"
                   placeholder="Phone Number"
                   onChange={handleChange}
-                  required
                   value={form.phoneNumber}
                 />
               </div>

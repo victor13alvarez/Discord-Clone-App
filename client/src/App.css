@@ -1717,11 +1717,11 @@ div.rta__autocomplete.str-chat__emojisearch {
   outline: none;
 }
 
-.team-channerl-header_menu-icon {
+.team-channel-header_menu-icon {
   display: none;
 }
 
-.channerl-list__container-toggle {
+.channel-list__container-toggle {
   display: none;
   height: 50px;
   width: 50px;
@@ -1754,7 +1754,7 @@ div.rta__autocomplete.str-chat__emojisearch {
     display: none;
   }
 
-  .team-channerl-header_menu-icon {
+  .team-channel-header_menu-icon {
     display: flex;
   }
 
@@ -1792,7 +1792,7 @@ div.rta__autocomplete.str-chat__emojisearch {
     width: 100%;
   }
 
-  .channerl-list__container-toggle {
+  .channel-list__container-toggle {
     display: flex;
   }
 

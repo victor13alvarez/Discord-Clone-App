@@ -23,7 +23,6 @@ const signup = async (req, res) => {
       .status(200)
       .json({ token, fullName, username, userId, hashedPassword, phoneNumber });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: error });
   }
 };
@@ -41,11 +40,11 @@ const login = async (req, res) => {
       res.status(200).json({
         token,
         fullName: users[0].fullName,
-        username: users[0].username,
+        username,
         userId: users[0].id,
       });
     } else {
-      res.status(200).json({ message: "Invalid password or username" });
+      res.status(500).json({ message: "Invalid password or username" });
     }
   } catch (error) {
     console.log(error);
